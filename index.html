@@ -43,15 +43,67 @@
       width: min(1100px, 100%);
       background: rgba(255,255,255,0.72);
       backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.6);
       border-radius: 32px;
       box-shadow: var(--shadow);
       padding: 40px 28px;
+      display: grid;
+      gap: 22px;
       text-align: center;
     }
 
+    .eyebrow {
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
     h1 {
+      margin: 0;
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.3rem, 6vw, 5rem);
+      line-height: 1.02;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: #374151;
+      font-size: clamp(1rem, 2vw, 1.12rem);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f97316, #fb7185);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #111827;
+      border: 1px solid rgba(17, 24, 39, 0.08);
     }
 
     .container {
@@ -60,16 +112,50 @@
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
       font-size: clamp(1.7rem, 4vw, 2.6rem);
+      margin: 0 0 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .section-subtitle {
+      margin: 0 0 30px;
+      color: var(--muted);
     }
 
     .trip-card {
       background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.8);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 26px;
       margin-bottom: 28px;
+      overflow: hidden;
+    }
+
+    .trip-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .trip-title {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.9rem);
+      line-height: 1;
+    }
+
+    .trip-meta {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .trip-description {
+      margin: 0 0 18px;
+      color: #374151;
     }
 
     .gallery {
@@ -82,148 +168,533 @@
       position: relative;
       border-radius: 22px;
       overflow: hidden;
+      background: #e5e7eb;
       min-height: 260px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
 
     .photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.05);
     }
 
     .photo span {
       position: absolute;
       left: 14px;
       bottom: 14px;
-      background: rgba(0,0,0,0.6);
+      background: rgba(17,24,39,0.58);
       color: white;
-      padding: 6px 10px;
+      padding: 8px 12px;
       border-radius: 999px;
+      font-size: 0.86rem;
+      backdrop-filter: blur(6px);
     }
 
-    /* MAPA */
-    .map-wrap {
-      position: relative;
-      max-width: 900px;
-      margin: 30px auto;
+    .font-cusco {
+      font-family: 'Playfair Display', serif;
+      color: #8b5e34;
+      text-shadow: 2px 2px 0 rgba(212,175,55,0.18);
     }
 
-    .map-wrap img {
-      width: 100%;
-      border-radius: 20px;
+    .font-barranquilla {
+      font-family: 'Permanent Marker', cursive;
+      color: #0f766e;
+      text-shadow: 2px 2px 0 rgba(251,191,36,0.22);
     }
 
-    .map-point {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      text-decoration: none;
+    .font-santamarta {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+      background: linear-gradient(180deg, #38bdf8, #0ea5e9, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .dot {
-      width: 16px;
-      height: 16px;
-      background: red;
-      border-radius: 50%;
-      border: 3px solid white;
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
     }
 
-    .future .dot {
-      background: #0ea5e9;
+    .mini-card {
+      background: rgba(255,255,255,0.78);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.75);
     }
 
-    .label {
-      margin-top: 6px;
-      background: black;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 12px;
+    .mini-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
     }
 
     .photo.placeholder {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: repeating-linear-gradient(45deg,#ddd,#ddd 10px,#eee 10px,#eee 20px);
+      background:
+        linear-gradient(135deg, rgba(56,189,248,0.18), rgba(20,184,166,0.18)),
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,0.35),
+          rgba(255,255,255,0.35) 12px,
+          rgba(255,255,255,0.15) 12px,
+          rgba(255,255,255,0.15) 24px
+        );
+      border: 2px dashed rgba(14,165,233,0.45);
     }
+
+    .placeholder-content {
+      text-align: center;
+      padding: 20px;
+      color: #0f766e;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .placeholder-content .icon {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .placeholder-content .small {
+      font-size: 0.92rem;
+      color: #4b5563;
+      font-weight: 500;
+    }
+
+    /* MAPA MEJORADO */
+    .map-section {
+      margin-bottom: 34px;
+    }
+
+    .map-card {
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      overflow: hidden;
+    }
+
+    .map-stage {
+      position: relative;
+      width: 100%;
+      min-height: 520px;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.75), transparent 18%),
+        radial-gradient(circle at 80% 25%, rgba(255,255,255,0.55), transparent 15%),
+        linear-gradient(180deg, #bfe7ff 0%, #d8f1ff 45%, #e9f8ff 100%);
+      border: 1px solid rgba(255,255,255,0.85);
+    }
+
+    .map-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.08)),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 39px,
+          rgba(255,255,255,0.18) 40px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 39px,
+          rgba(255,255,255,0.18) 40px
+        );
+      pointer-events: none;
+    }
+
+    .continent {
+      position: absolute;
+      background: linear-gradient(180deg, #9cd67f, #78bf5f);
+      box-shadow: inset 0 8px 18px rgba(255,255,255,0.22);
+      opacity: 0.95;
+    }
+
+    .continent.sa {
+      width: 240px;
+      height: 360px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -44%);
+      clip-path: polygon(
+        40% 0%, 57% 6%, 66% 13%, 72% 24%, 69% 35%, 74% 46%, 71% 56%, 77% 67%,
+        74% 79%, 65% 91%, 56% 100%, 48% 93%, 46% 81%, 40% 69%, 33% 58%, 29% 48%,
+        23% 37%, 20% 25%, 28% 13%
+      );
+      border-radius: 40px;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.12));
+    }
+
+    .route-line {
+      position: absolute;
+      border-top: 3px dashed rgba(14, 116, 144, 0.45);
+      transform-origin: left center;
+      z-index: 2;
+    }
+
+    .route-line.one {
+      width: 115px;
+      top: 180px;
+      left: calc(50% - 12px);
+      transform: rotate(-18deg);
+    }
+
+    .route-line.two {
+      width: 75px;
+      top: 130px;
+      left: calc(50% - 5px);
+      transform: rotate(-12deg);
+    }
+
+    .map-point {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      text-decoration: none;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .map-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ef4444;
+      border: 3px solid white;
+      box-shadow: 0 0 0 10px rgba(239,68,68,0.16);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .map-point:hover .map-dot {
+      transform: scale(1.15);
+      box-shadow: 0 0 0 14px rgba(239,68,68,0.22);
+    }
+
+    .map-point.future .map-dot {
+      background: #0ea5e9;
+      box-shadow: 0 0 0 10px rgba(14,165,233,0.16);
+    }
+
+    .map-point.future:hover .map-dot {
+      box-shadow: 0 0 0 14px rgba(14,165,233,0.22);
+    }
+
+    .map-label {
+      background: rgba(17,24,39,0.78);
+      color: white;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    }
+
+    .map-note {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      background: rgba(255,255,255,0.78);
+      color: #334155;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 0.9rem;
+      max-width: 240px;
+      box-shadow: var(--shadow);
+      z-index: 2;
+    }
+
+    .map-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    .legend-color {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+
+    .legend-color.done { background: #ef4444; }
+    .legend-color.future { background: #0ea5e9; }
 
     footer {
       text-align: center;
-      margin: 30px;
+      color: var(--muted);
+      padding: 10px 20px 45px;
+    }
+
+    @media (max-width: 900px) {
+      .map-stage {
+        min-height: 420px;
+      }
+
+      .continent.sa {
+        width: 190px;
+        height: 290px;
+      }
+
+      .route-line.one {
+        width: 90px;
+        top: 150px;
+      }
+
+      .route-line.two {
+        width: 60px;
+        top: 110px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .trip-card,
+      .map-card {
+        padding: 22px;
+      }
+
+      .photo {
+        min-height: 220px;
+      }
+
+      .map-stage {
+        min-height: 360px;
+      }
+
+      .continent.sa {
+        width: 150px;
+        height: 230px;
+      }
+
+      .map-label {
+        font-size: 0.78rem;
+        padding: 7px 11px;
+      }
+
+      .map-note {
+        position: static;
+        margin: 16px;
+        max-width: none;
+      }
+
+      .route-line.one,
+      .route-line.two {
+        display: none;
+      }
     }
   </style>
 </head>
-
 <body>
+  <header class="hero">
+    <div class="hero-card">
+      <p class="eyebrow">Nuestro mapa de recuerdos</p>
+      <h1>Viajes, fotos y momentos que queremos guardar para siempre</h1>
+      <p>
+        Una galería especial de nuestros viajes juntos. Desde las calles mágicas de Cusco
+        y la energía de Barranquilla, hasta el próximo sueño: Santa Marta.
+      </p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#viajes">Ver viajes</a>
+        <a class="btn btn-secondary" href="#proximo">Próximo destino</a>
+      </div>
+    </div>
+  </header>
 
-<header class="hero">
-  <div class="hero-card">
-    <h1>Nuestros viajes</h1>
-  </div>
-</header>
+  <main class="container">
 
-<main class="container">
+    <section class="map-section">
+      <div class="map-card">
+        <h2 class="section-title">Mapa de nuestros viajes</h2>
+        <p class="section-subtitle">Haz clic en cada punto para ir a su galería.</p>
 
-<!-- MAPA -->
-<section>
-  <h2 class="section-title">Mapa de nuestros viajes</h2>
+        <div class="map-stage">
+          <div class="continent sa"></div>
 
-  <div class="map-wrap">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1600px-World_map_-_low_resolution.svg.png">
+          <div class="route-line one"></div>
+          <div class="route-line two"></div>
 
-    <a href="#cusco" class="map-point" style="top: 62%; left: 31%;">
-      <div class="dot"></div>
-      <div class="label">Cusco</div>
-    </a>
+          <a href="#cusco" class="map-point" style="top: 49%; left: 49%;">
+            <div class="map-dot"></div>
+            <div class="map-label">Cusco</div>
+          </a>
 
-    <a href="#barranquilla" class="map-point" style="top: 44%; left: 33%;">
-      <div class="dot"></div>
-      <div class="label">Barranquilla</div>
-    </a>
+          <a href="#barranquilla" class="map-point" style="top: 31%; left: 53%;">
+            <div class="map-dot"></div>
+            <div class="map-label">Barranquilla</div>
+          </a>
 
-    <a href="#proximo" class="map-point future" style="top: 46%; left: 34%;">
-      <div class="dot"></div>
-      <div class="label">Santa Marta</div>
-    </a>
+          <a href="#proximo" class="map-point future" style="top: 26%; left: 55%;">
+            <div class="map-dot"></div>
+            <div class="map-label">Santa Marta</div>
+          </a>
 
-  </div>
-</section>
+          <div class="map-note">
+            Un mapa visual sencillo para marcar recuerdos ya vividos y el próximo destino.
+          </div>
+        </div>
 
-<!-- CUSCO -->
-<article class="trip-card" id="cusco">
-  <h2>Cusco</h2>
-  <div class="gallery">
-    <div class="photo"><img src="cuscocyi/cusco1.jpg"><span>Centro histórico</span></div>
-    <div class="photo"><img src="cuscocyi/cusco2.jpg"><span>Paisajes</span></div>
-    <div class="photo"><img src="cuscocyi/cusco3.jpg"><span>Recuerdo</span></div>
-  </div>
-</article>
+        <div class="map-legend">
+          <div class="legend-item">
+            <span class="legend-color done"></span>
+            <span>Viajes realizados</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color future"></span>
+            <span>Próximo destino</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- BARRANQUILLA -->
-<article class="trip-card" id="barranquilla">
-  <h2>Barranquilla</h2>
-  <div class="gallery">
-    <div class="photo"><img src="barranquillacyi/barranquilla-28.jpg"></div>
-    <div class="photo"><img src="barranquillacyi/barranquilla-7.jpg"></div>
-    <div class="photo"><img src="barranquillacyi/barranquilla-52.jpg"></div>
-  </div>
-</article>
+    <section id="viajes">
+      <h2 class="section-title">Galerías por destino</h2>
+      <p class="section-subtitle">Puedes cambiar las fotos, los textos y los colores cuando quieras.</p>
 
-<!-- FUTURO -->
-<section id="proximo">
-  <h2>Santa Marta (próximo)</h2>
-  <div class="gallery">
-    <div class="photo placeholder">Próximamente</div>
-    <div class="photo placeholder">Viaje planeado</div>
-    <div class="photo placeholder">Falta completar</div>
-  </div>
-</section>
+      <article class="trip-card" id="cusco">
+        <div class="trip-header">
+          <h3 class="trip-title font-cusco">Cusco, Perú</h3>
+          <div class="trip-meta">Recuerdos entre historia, montañas y calles de piedra</div>
+        </div>
+        <p class="trip-description">
+          Un lugar lleno de cultura, paisajes increíbles y momentos especiales que merecen su propia galería.
+        </p>
+        <div class="gallery">
+          <div class="photo">
+            <img src="cuscocyi/cusco1.jpg" alt="Viaje a Cusco 1">
+            <span>Centro histórico</span>
+          </div>
+          <div class="photo">
+            <img src="cuscocyi/cusco2.jpg" alt="Viaje a Cusco 2">
+            <span>Paisajes</span>
+          </div>
+          <div class="photo">
+            <img src="cuscocyi/cusco3.jpg" alt="Viaje a Cusco 3">
+            <span>Recuerdo especial</span>
+          </div>
+        </div>
+      </article>
 
-</main>
+      <article class="trip-card" id="barranquilla">
+        <div class="trip-header">
+          <h3 class="trip-title font-barranquilla">Barranquilla, Colombia</h3>
+          <div class="trip-meta">Más color, más alegría, más recuerdos</div>
+        </div>
+        <p class="trip-description">
+          Un viaje lleno de energía, calor y lugares que valieron completamente la pena.
+        </p>
+        <div class="gallery">
+          <div class="photo">
+            <img src="barranquillacyi/barranquilla-28.jpg" alt="Viaje a Barranquilla 1">
+            <span>Costas y ciudad</span>
+          </div>
+          <div class="photo">
+            <img src="barranquillacyi/barranquilla-7.jpg" alt="Viaje a Barranquilla 2">
+            <span>Paseos</span>
+          </div>
+          <div class="photo">
+            <img src="barranquillacyi/barranquilla-52.jpg" alt="Viaje a Barranquilla 3">
+            <span>Momentos juntos</span>
+          </div>
+        </div>
+      </article>
+    </section>
 
-<footer>
-  Hecho con cariño ✈️
-</footer>
+    <section id="proximo">
+      <h2 class="section-title">Próximo destino</h2>
+      <p class="section-subtitle">Un espacio para lo que viene.</p>
 
+      <div class="mini-card">
+        <h3 class="trip-title font-santamarta">Santa Marta, Colombia</h3>
+        <p>
+          Todavía no es un recuerdo, pero ya tiene su lugar aquí. Cuando hagan el viaje,
+          estas tarjetas podrán reemplazarse por sus fotos reales.
+        </p>
+
+        <div class="gallery">
+          <div class="photo placeholder">
+            <div class="placeholder-content">
+              <span class="icon">📍</span>
+              Próximamente
+              <div class="small">Espacio reservado para la primera foto</div>
+            </div>
+            <span>Próximamente</span>
+          </div>
+
+          <div class="photo placeholder">
+            <div class="placeholder-content">
+              <span class="icon">🌴</span>
+              Viaje planeado
+              <div class="small">Aquí irá otro recuerdo de Santa Marta</div>
+            </div>
+            <span>Nuestro plan</span>
+          </div>
+
+          <div class="photo placeholder">
+            <div class="placeholder-content">
+              <span class="icon">☀️</span>
+              Falta completar
+              <div class="small">Foto pendiente para el futuro viaje</div>
+            </div>
+            <span>Nuevo recuerdo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 34px;">
+      <h2 class="section-title">Ideas para mejorarla después</h2>
+      <div class="plans">
+        <div class="mini-card">
+          <h3>Modal de fotos</h3>
+          <p>Que al hacer clic en una imagen se abra en grande, estilo galería moderna.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Línea de tiempo</h3>
+          <p>Mostrar los viajes en orden cronológico con fechas y pequeñas anécdotas.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Mapa interactivo</h3>
+          <p>Marcar Cusco, Barranquilla y Santa Marta en un mapa bonito.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Música o efectos</h3>
+          <p>Agregar un fondo suave o transiciones delicadas para que se sienta más especial.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Hecho con cariño para guardar recuerdos de nuestros viajes ✈️
+  </footer>
 </body>
 </html>
