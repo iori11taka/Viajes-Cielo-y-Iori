@@ -19,8 +19,13 @@
       --radius: 24px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -272,243 +277,20 @@
       font-weight: 500;
     }
 
-    /* MAPA MEJORADO */
-    .map-section {
-      margin-bottom: 34px;
-    }
-
-    .map-card {
-      background: var(--card);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.8);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px;
-      overflow: hidden;
-    }
-
-    .map-stage {
-      position: relative;
-      width: 100%;
-      min-height: 520px;
-      border-radius: 24px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.75), transparent 18%),
-        radial-gradient(circle at 80% 25%, rgba(255,255,255,0.55), transparent 15%),
-        linear-gradient(180deg, #bfe7ff 0%, #d8f1ff 45%, #e9f8ff 100%);
-      border: 1px solid rgba(255,255,255,0.85);
-    }
-
-    .map-stage::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.08)),
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 39px,
-          rgba(255,255,255,0.18) 40px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 39px,
-          rgba(255,255,255,0.18) 40px
-        );
-      pointer-events: none;
-    }
-
-    .continent {
-      position: absolute;
-      background: linear-gradient(180deg, #9cd67f, #78bf5f);
-      box-shadow: inset 0 8px 18px rgba(255,255,255,0.22);
-      opacity: 0.95;
-    }
-
-    .continent.sa {
-      width: 240px;
-      height: 360px;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -44%);
-      clip-path: polygon(
-        40% 0%, 57% 6%, 66% 13%, 72% 24%, 69% 35%, 74% 46%, 71% 56%, 77% 67%,
-        74% 79%, 65% 91%, 56% 100%, 48% 93%, 46% 81%, 40% 69%, 33% 58%, 29% 48%,
-        23% 37%, 20% 25%, 28% 13%
-      );
-      border-radius: 40px;
-      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.12));
-    }
-
-    .route-line {
-      position: absolute;
-      border-top: 3px dashed rgba(14, 116, 144, 0.45);
-      transform-origin: left center;
-      z-index: 2;
-    }
-
-    .route-line.one {
-      width: 115px;
-      top: 180px;
-      left: calc(50% - 12px);
-      transform: rotate(-18deg);
-    }
-
-    .route-line.two {
-      width: 75px;
-      top: 130px;
-      left: calc(50% - 5px);
-      transform: rotate(-12deg);
-    }
-
-    .map-point {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      text-decoration: none;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .map-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #ef4444;
-      border: 3px solid white;
-      box-shadow: 0 0 0 10px rgba(239,68,68,0.16);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .map-point:hover .map-dot {
-      transform: scale(1.15);
-      box-shadow: 0 0 0 14px rgba(239,68,68,0.22);
-    }
-
-    .map-point.future .map-dot {
-      background: #0ea5e9;
-      box-shadow: 0 0 0 10px rgba(14,165,233,0.16);
-    }
-
-    .map-point.future:hover .map-dot {
-      box-shadow: 0 0 0 14px rgba(14,165,233,0.22);
-    }
-
-    .map-label {
-      background: rgba(17,24,39,0.78);
-      color: white;
-      padding: 9px 14px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      white-space: nowrap;
-      box-shadow: 0 10px 18px rgba(0,0,0,0.10);
-    }
-
-    .map-note {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      background: rgba(255,255,255,0.78);
-      color: #334155;
-      padding: 12px 14px;
-      border-radius: 16px;
-      font-size: 0.9rem;
-      max-width: 240px;
-      box-shadow: var(--shadow);
-      z-index: 2;
-    }
-
-    .map-legend {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #475569;
-      font-size: 0.95rem;
-    }
-
-    .legend-color {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-    }
-
-    .legend-color.done { background: #ef4444; }
-    .legend-color.future { background: #0ea5e9; }
-
     footer {
       text-align: center;
       color: var(--muted);
       padding: 10px 20px 45px;
     }
 
-    @media (max-width: 900px) {
-      .map-stage {
-        min-height: 420px;
-      }
-
-      .continent.sa {
-        width: 190px;
-        height: 290px;
-      }
-
-      .route-line.one {
-        width: 90px;
-        top: 150px;
-      }
-
-      .route-line.two {
-        width: 60px;
-        top: 110px;
-      }
-    }
-
     @media (max-width: 640px) {
       .hero-card,
-      .trip-card,
-      .map-card {
+      .trip-card {
         padding: 22px;
       }
 
       .photo {
         min-height: 220px;
-      }
-
-      .map-stage {
-        min-height: 360px;
-      }
-
-      .continent.sa {
-        width: 150px;
-        height: 230px;
-      }
-
-      .map-label {
-        font-size: 0.78rem;
-        padding: 7px 11px;
-      }
-
-      .map-note {
-        position: static;
-        margin: 16px;
-        max-width: none;
-      }
-
-      .route-line.one,
-      .route-line.two {
-        display: none;
       }
     }
   </style>
@@ -530,56 +312,11 @@
   </header>
 
   <main class="container">
-
-    <section class="map-section">
-      <div class="map-card">
-        <h2 class="section-title">Mapa de nuestros viajes</h2>
-        <p class="section-subtitle">Haz clic en cada punto para ir a su galería.</p>
-
-        <div class="map-stage">
-          <div class="continent sa"></div>
-
-          <div class="route-line one"></div>
-          <div class="route-line two"></div>
-
-          <a href="#cusco" class="map-point" style="top: 49%; left: 49%;">
-            <div class="map-dot"></div>
-            <div class="map-label">Cusco</div>
-          </a>
-
-          <a href="#barranquilla" class="map-point" style="top: 31%; left: 53%;">
-            <div class="map-dot"></div>
-            <div class="map-label">Barranquilla</div>
-          </a>
-
-          <a href="#proximo" class="map-point future" style="top: 26%; left: 55%;">
-            <div class="map-dot"></div>
-            <div class="map-label">Santa Marta</div>
-          </a>
-
-          <div class="map-note">
-            Un mapa visual sencillo para marcar recuerdos ya vividos y el próximo destino.
-          </div>
-        </div>
-
-        <div class="map-legend">
-          <div class="legend-item">
-            <span class="legend-color done"></span>
-            <span>Viajes realizados</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-color future"></span>
-            <span>Próximo destino</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="viajes">
       <h2 class="section-title">Galerías por destino</h2>
       <p class="section-subtitle">Puedes cambiar las fotos, los textos y los colores cuando quieras.</p>
 
-      <article class="trip-card" id="cusco">
+      <article class="trip-card">
         <div class="trip-header">
           <h3 class="trip-title font-cusco">Cusco, Perú</h3>
           <div class="trip-meta">Recuerdos entre historia, montañas y calles de piedra</div>
@@ -603,7 +340,7 @@
         </div>
       </article>
 
-      <article class="trip-card" id="barranquilla">
+      <article class="trip-card">
         <div class="trip-header">
           <h3 class="trip-title font-barranquilla">Barranquilla, Colombia</h3>
           <div class="trip-meta">Más color, más alegría, más recuerdos</div>
