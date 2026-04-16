@@ -239,6 +239,15 @@
       text-shadow: 2px 2px 0 rgba(251,191,36,0.22);
     }
 
+    .font-bogota {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.05em;
+      color: #c62828;
+      text-shadow:
+        2px 2px 0 rgba(241, 196, 15, 0.35),
+        4px 4px 0 rgba(25, 118, 210, 0.18);
+    }
+
     .font-santamarta {
       font-family: 'Bebas Neue', sans-serif;
       letter-spacing: 0.06em;
@@ -302,7 +311,6 @@
       font-weight: 500;
     }
 
-    /* MODAL */
     .modal {
       position: fixed;
       inset: 0;
@@ -526,8 +534,8 @@
       <p class="eyebrow">Nuestro mapa de recuerdos</p>
       <h1>Viajes, fotos y momentos que queremos guardar para siempre</h1>
       <p>
-        Una galería especial de nuestros viajes juntos. Desde las calles mágicas de Cusco
-        y la energía de Barranquilla, hasta el próximo sueño: Santa Marta.
+        Una galería especial de nuestros viajes juntos. Desde las calles mágicas de Cusco,
+        la energía de Barranquilla y la esencia urbana de Bogotá, hasta el próximo sueño: Santa Marta.
       </p>
       <div class="hero-buttons">
         <a class="btn btn-primary" href="#viajes">Ver viajes</a>
@@ -610,6 +618,41 @@
           </div>
         </div>
       </article>
+
+      <article class="trip-card">
+        <div class="trip-header">
+          <h3 class="trip-title font-bogota">Bogotá, Colombia</h3>
+          <div class="trip-meta">Ciudad, altura, luces y recuerdos especiales</div>
+        </div>
+        <p class="trip-description">
+          Un viaje entre calles, miradores, rincones urbanos y momentos que también merecen su propia galería.
+        </p>
+        <div class="gallery">
+          <div class="photo clickable"
+               data-title="Bogotá · Ciudad y arquitectura"
+               data-description="Una colección de fotos entre calles, edificios, rincones urbanos y escenas del viaje en Bogotá."
+               data-images="bogotacyi/bogota-1.jpg,bogotacyi/bogota-2.jpg,bogotacyi/bogota-3.jpg">
+            <img src="bogotacyi/bogota-1.jpg" alt="Viaje a Bogotá 1">
+            <span>Ciudad y arquitectura</span>
+          </div>
+
+          <div class="photo clickable"
+               data-title="Bogotá · Paseos"
+               data-description="Más fotos del recorrido, lugares visitados y momentos espontáneos del viaje."
+               data-images="bogotacyi/bogota-4.jpg,bogotacyi/bogota-5.jpg,bogotacyi/bogota-6.jpg">
+            <img src="bogotacyi/bogota-4.jpg" alt="Viaje a Bogotá 2">
+            <span>Paseos</span>
+          </div>
+
+          <div class="photo clickable"
+               data-title="Bogotá · Momentos juntos"
+               data-description="Una mini galería con recuerdos más personales y especiales del viaje en Bogotá."
+               data-images="bogotacyi/bogota-7.jpg,bogotacyi/bogota-8.jpg,bogotacyi/bogota-9.jpg">
+            <img src="bogotacyi/bogota-7.jpg" alt="Viaje a Bogotá 3">
+            <span>Momentos juntos</span>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section id="proximo">
@@ -652,15 +695,12 @@
         </div>
       </div>
     </section>
-
-    
   </main>
 
   <footer>
     Hecho con cariño para guardar recuerdos de nuestros viajes ✈️
   </footer>
 
-  <!-- MODAL -->
   <div class="modal" id="photoModal" aria-hidden="true">
     <div class="modal-box">
       <div class="modal-image-area">
