@@ -227,6 +227,12 @@
       transform: translateY(0);
     }
 
+    .font-divertidas {
+      font-family: 'Permanent Marker', cursive;
+      color: #7c3aed;
+      text-shadow: 2px 2px 0 rgba(251, 191, 36, 0.3);
+    }
+
     .font-cusco {
       font-family: 'Playfair Display', serif;
       color: #8b5e34;
@@ -548,6 +554,33 @@
     <section id="viajes">
       <h2 class="section-title">Galerías por destino</h2>
       <p class="section-subtitle">Haz clic en una imagen para verla grande y recorrer más fotos del mismo momento.</p>
+
+      <article class="trip-card">
+        <div class="trip-header">
+          <h3 class="trip-title font-divertidas">Fotos divertidas</h3>
+          <div class="trip-meta">Momentos random, risas y recuerdos espontáneos</div>
+        </div>
+        <p class="trip-description">
+          Una colección de momentos graciosos, fotos inesperadas y recuerdos que no pertenecen a un lugar específico, pero sí a nuestra historia.
+        </p>
+        <div class="gallery">
+          <div class="photo clickable"
+               data-title="Fotos divertidas · Momentos graciosos"
+               data-description="Fotos espontáneas, risas y momentos que simplemente pasaron."
+               data-images="divertidas/divertida1.jpg,divertidas/divertida2.jpg,divertidas/divertida3.jpg,divertidas/divertida4.jpg,divertidas/divertida5.jpg,divertidas/divertida6.jpg,divertidas/divertida7.jpg">
+            <img src="divertidas/divertida1.jpg" alt="Foto divertida 1">
+            <span>Risas</span>
+          </div>
+
+          <div class="photo clickable"
+               data-title="Fotos divertidas · Momentos random"
+               data-description="Situaciones inesperadas que terminaron siendo memorables."
+               data-images="divertidas/divertida4.jpg,divertidas/divertida5.jpg">
+            <img src="divertidas/divertida4.jpg" alt="Foto divertida 2">
+            <span>Random</span>
+          </div>
+        </div>
+      </article>
 
       <article class="trip-card">
         <div class="trip-header">
