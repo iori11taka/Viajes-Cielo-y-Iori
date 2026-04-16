@@ -202,6 +202,31 @@
       backdrop-filter: blur(6px);
     }
 
+    .photo.clickable {
+      cursor: pointer;
+    }
+
+    .photo.clickable::after {
+      content: "Ver más";
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.88);
+      color: #111827;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .photo.clickable:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .font-cusco {
       font-family: 'Playfair Display', serif;
       color: #8b5e34;
@@ -277,10 +302,193 @@
       font-weight: 500;
     }
 
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 999;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(1100px, 100%);
+      max-height: 92vh;
+      background: rgba(255,255,255,0.95);
+      border-radius: 28px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.28);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
+    }
+
+    .modal-image-area {
+      position: relative;
+      background: #0f172a;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-image-area img {
+      width: 100%;
+      height: 100%;
+      max-height: 92vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-panel {
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      color: #111827;
+    }
+
+    .modal-subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .modal-close {
+      border: none;
+      background: #111827;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.15rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .modal-close:hover {
+      opacity: 0.9;
+    }
+
+    .modal-counter {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #334155;
+      font-weight: 600;
+      font-size: 0.9rem;
+      width: fit-content;
+    }
+
+    .modal-description {
+      color: #475569;
+      line-height: 1.65;
+      font-size: 0.97rem;
+    }
+
+    .modal-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .modal-thumb {
+      border: 2px solid transparent;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #e5e7eb;
+      height: 96px;
+      padding: 0;
+    }
+
+    .modal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-thumb.active {
+      border-color: #f97316;
+      box-shadow: 0 8px 18px rgba(249,115,22,0.18);
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      color: #111827;
+      font-size: 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+      z-index: 2;
+    }
+
+    .modal-nav:hover {
+      background: white;
+    }
+
+    .modal-prev {
+      left: 18px;
+    }
+
+    .modal-next {
+      right: 18px;
+    }
+
+    .modal-hint {
+      color: #64748b;
+      font-size: 0.88rem;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
       padding: 10px 20px 45px;
+    }
+
+    @media (max-width: 900px) {
+      .modal-box {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-image-area {
+        min-height: 320px;
+      }
+
+      .modal-panel {
+        max-height: 40vh;
+      }
     }
 
     @media (max-width: 640px) {
@@ -291,6 +499,23 @@
 
       .photo {
         min-height: 220px;
+      }
+
+      .modal {
+        padding: 12px;
+      }
+
+      .modal-panel {
+        padding: 18px;
+      }
+
+      .modal-thumb {
+        height: 78px;
+      }
+
+      .modal-nav {
+        width: 44px;
+        height: 44px;
       }
     }
   </style>
@@ -314,7 +539,7 @@
   <main class="container">
     <section id="viajes">
       <h2 class="section-title">Galerías por destino</h2>
-      <p class="section-subtitle">Puedes cambiar las fotos, los textos y los colores cuando quieras.</p>
+      <p class="section-subtitle">Haz clic en una imagen para verla grande y recorrer más fotos del mismo momento.</p>
 
       <article class="trip-card">
         <div class="trip-header">
@@ -325,15 +550,26 @@
           Un lugar lleno de cultura, paisajes increíbles y momentos especiales que merecen su propia galería.
         </p>
         <div class="gallery">
-          <div class="photo">
+          <div class="photo clickable"
+               data-title="Cusco · Centro histórico"
+               data-description="Una selección de fotos del centro histórico, rincones coloniales y calles de piedra."
+               data-images="cuscocyi/cusco1.jpg,cuscocyi/cusco4.jpg,cuscocyi/cusco6.jpg">
             <img src="cuscocyi/cusco1.jpg" alt="Viaje a Cusco 1">
             <span>Centro histórico</span>
           </div>
-          <div class="photo">
+
+          <div class="photo clickable"
+               data-title="Cusco · Paisajes"
+               data-description="Más vistas, recorridos y escenas del viaje en Cusco."
+               data-images="cuscocyi/cusco2.jpg,cuscocyi/cusco5.jpg,cuscocyi/cusco4.jpg">
             <img src="cuscocyi/cusco2.jpg" alt="Viaje a Cusco 2">
             <span>Paisajes</span>
           </div>
-          <div class="photo">
+
+          <div class="photo clickable"
+               data-title="Cusco · Recuerdo especial"
+               data-description="Momentos más personales del viaje, con fotos diferentes de esa misma vibra."
+               data-images="cuscocyi/cusco3.jpg,cuscocyi/cusco6.jpg,cuscocyi/cusco2.jpg">
             <img src="cuscocyi/cusco3.jpg" alt="Viaje a Cusco 3">
             <span>Recuerdo especial</span>
           </div>
@@ -349,15 +585,26 @@
           Un viaje lleno de energía, calor y lugares que valieron completamente la pena.
         </p>
         <div class="gallery">
-          <div class="photo">
+          <div class="photo clickable"
+               data-title="Barranquilla · Costas y ciudad"
+               data-description="Fotos urbanas y escenas del viaje entre calles, arquitectura y rincones de la ciudad."
+               data-images="barranquillacyi/barranquilla-28.jpg,barranquillacyi/barranquilla-33.jpg,barranquillacyi/barranquilla-35.jpg">
             <img src="barranquillacyi/barranquilla-28.jpg" alt="Viaje a Barranquilla 1">
             <span>Costas y ciudad</span>
           </div>
-          <div class="photo">
+
+          <div class="photo clickable"
+               data-title="Barranquilla · Paseos"
+               data-description="Más variedad de fotos del paseo, murales, recorridos y momentos casuales."
+               data-images="barranquillacyi/barranquilla-7.jpg,barranquillacyi/barranquilla-49.jpg,barranquillacyi/barranquilla-53.jpg">
             <img src="barranquillacyi/barranquilla-7.jpg" alt="Viaje a Barranquilla 2">
             <span>Paseos</span>
           </div>
-          <div class="photo">
+
+          <div class="photo clickable"
+               data-title="Barranquilla · Momentos juntos"
+               data-description="Una mini colección con recuerdos más personales del viaje."
+               data-images="barranquillacyi/barranquilla-52.jpg,barranquillacyi/barranquilla-35.jpg,barranquillacyi/barranquilla-33.jpg">
             <img src="barranquillacyi/barranquilla-52.jpg" alt="Viaje a Barranquilla 3">
             <span>Momentos juntos</span>
           </div>
@@ -412,7 +659,7 @@
       <div class="plans">
         <div class="mini-card">
           <h3>Modal de fotos</h3>
-          <p>Que al hacer clic en una imagen se abra en grande, estilo galería moderna.</p>
+          <p>Ahora cada imagen puede abrir una mini colección del mismo momento.</p>
         </div>
         <div class="mini-card">
           <h3>Línea de tiempo</h3>
@@ -433,5 +680,136 @@
   <footer>
     Hecho con cariño para guardar recuerdos de nuestros viajes ✈️
   </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="photoModal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-image-area">
+        <button class="modal-nav modal-prev" id="prevBtn" aria-label="Foto anterior">‹</button>
+        <img id="modalImage" src="" alt="Foto ampliada">
+        <button class="modal-nav modal-next" id="nextBtn" aria-label="Foto siguiente">›</button>
+      </div>
+
+      <div class="modal-panel">
+        <div class="modal-top">
+          <div>
+            <h3 class="modal-title" id="modalTitle">Galería</h3>
+            <p class="modal-subtitle" id="modalSubtitle">Recuerdos del viaje</p>
+          </div>
+          <button class="modal-close" id="closeBtn" aria-label="Cerrar">✕</button>
+        </div>
+
+        <div class="modal-counter" id="modalCounter">1 / 1</div>
+        <div class="modal-description" id="modalDescription"></div>
+        <div class="modal-thumbs" id="modalThumbs"></div>
+        <div class="modal-hint">También puedes usar las flechas del teclado para avanzar o retroceder.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("photoModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSubtitle = document.getElementById("modalSubtitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalCounter = document.getElementById("modalCounter");
+    const modalThumbs = document.getElementById("modalThumbs");
+    const closeBtn = document.getElementById("closeBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let currentGallery = [];
+    let currentIndex = 0;
+    let currentTitle = "";
+    let currentDescription = "";
+
+    function updateModal() {
+      if (!currentGallery.length) return;
+
+      modalImage.src = currentGallery[currentIndex];
+      modalTitle.textContent = currentTitle;
+      modalSubtitle.textContent = "Colección relacionada";
+      modalDescription.textContent = currentDescription;
+      modalCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+
+      modalThumbs.innerHTML = "";
+      currentGallery.forEach((src, index) => {
+        const thumb = document.createElement("button");
+        thumb.className = "modal-thumb" + (index === currentIndex ? " active" : "");
+        thumb.setAttribute("aria-label", `Ir a foto ${index + 1}`);
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `${currentTitle} ${index + 1}`;
+
+        thumb.appendChild(img);
+        thumb.addEventListener("click", () => {
+          currentIndex = index;
+          updateModal();
+        });
+
+        modalThumbs.appendChild(thumb);
+      });
+    }
+
+    function openModal(images, title, description, startIndex = 0) {
+      currentGallery = images;
+      currentTitle = title;
+      currentDescription = description;
+      currentIndex = startIndex;
+
+      updateModal();
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      modalImage.src = "";
+    }
+
+    function showNext() {
+      if (!currentGallery.length) return;
+      currentIndex = (currentIndex + 1) % currentGallery.length;
+      updateModal();
+    }
+
+    function showPrev() {
+      if (!currentGallery.length) return;
+      currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateModal();
+    }
+
+    document.querySelectorAll(".photo.clickable").forEach((card) => {
+      card.addEventListener("click", () => {
+        const images = card.dataset.images.split(",").map(item => item.trim()).filter(Boolean);
+        const title = card.dataset.title || "Galería";
+        const description = card.dataset.description || "Recuerdos del viaje";
+        openModal(images, title, description, 0);
+      });
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    nextBtn.addEventListener("click", showNext);
+    prevBtn.addEventListener("click", showPrev);
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!modal.classList.contains("open")) return;
+
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrev();
+    });
+  </script>
 </body>
 </html>
